@@ -1,3 +1,4 @@
 export interface AppState {
-    hasLoggedIn: boolean
+    hasLoggedIn: boolean,
+    testDocs: any;
 }

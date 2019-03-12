@@ -23,5 +23,7 @@ export class AppComponent implements OnInit {
 
   login() {
     this.store.dispatch(new appStore.Login());
+    this.store.dispatch(new appStore.GetDocsByType({ docType: 'test' }));
+    this.storeData$.subscribe(r => console.log(r));
   }
 }
