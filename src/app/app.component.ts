@@ -9,8 +9,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'mylist';
+  title = 'ngrx-starter';
   loggedIn: boolean = false;
+  userData: any;
   storeData$: Observable<appStore.AppState>;
 
   constructor(private store: Store<any>) {
@@ -25,5 +26,10 @@ export class AppComponent implements OnInit {
     this.store.dispatch(new appStore.Login());
     this.store.dispatch(new appStore.GetDocsByType({ docType: 'test' }));
     this.storeData$.subscribe(r => console.log(r));
+  }
+
+  onSignIn(event: any) {
+    console.log('app onSignIn', event);
+    this.userData = JSON.stringify(event);
   }
 }
