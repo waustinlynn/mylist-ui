@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -25,12 +26,13 @@ import { MaterialModule } from './material.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot({ app: appReducer }),
     EffectsModule.forRoot([AppEffects]),
     MaterialModule,
-    LoginModule
+    LoginModule,
   ],
   providers: [DocService],
   bootstrap: [AppComponent]

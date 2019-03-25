@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { first, filter } from 'rxjs/operators';
 import {
   AuthService,
   FacebookLoginProvider,
@@ -12,7 +13,8 @@ import {
 })
 export class AlLoginComponent implements OnInit {
   @Output() onSignIn: EventEmitter<any>;
-
+  @Input() autoLogin: boolean = true;
+  showLogin: boolean = true;
 
   constructor(private socialAuthService: AuthService) {
     this.onSignIn = new EventEmitter();
@@ -26,16 +28,19 @@ export class AlLoginComponent implements OnInit {
 
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
-        console.log(socialPlatform + " sign in data : ", userData);
-        this.onSignIn.emit(userData);
-        // Now sign-in with userData
-        // ...
-
+        // this.onSignIn.emit(userData);
       }
     );
   }
 
   ngOnInit() {
+    this.socialAuthService.authState.pipe(
+      filter(r => r != null && r != undefined),
+      first()
+    ).subscribe(r => {
+      this.showLogin = false;
+      this.onSignIn.emit(r);
+    });
   }
 
 }
