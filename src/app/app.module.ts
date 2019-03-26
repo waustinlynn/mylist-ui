@@ -16,12 +16,14 @@ import { appReducer } from './store/app.reducer';
 import { AppEffects } from './store/app.effects';
 
 import { MaterialModule } from './material.module';
+import { ListEditorComponent } from './list-editor/list-editor.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListEditorComponent
   ],
   imports: [
     BrowserModule,

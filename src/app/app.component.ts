@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   loggedIn: boolean = false;
   userData: any;
   storeData$: Observable<appStore.AppState>;
+  menuItems: any[];
 
   constructor(private store: Store<any>) {
     this.storeData$ = store.select(r => r.app);
@@ -20,6 +21,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.storeData$.subscribe(r => this.loggedIn = r.hasLoggedIn);
+    this.menuItems = [
+      { name: 'Grocery' }
+    ]
   }
 
   login() {

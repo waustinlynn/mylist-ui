@@ -1,3 +1,4 @@
-<div *ngIf="showLogin">
+<div *ngIf="showLogin; else loggedIn">
   <button mat-button (click)="socialSignIn('google')">Sign in with Google</button>
 </div>
+<ng-template #loggedIn>{{userData.name}}</ng-template>

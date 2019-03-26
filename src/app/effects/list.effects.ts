@@ -4,6 +4,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { concatMap } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 import { ListActionTypes, ListActions } from '../actions/list.actions';
+import { ListService } from '../list.service';
 
 
 @Injectable()
@@ -13,11 +14,12 @@ export class ListEffects {
   @Effect()
   loadLists$ = this.actions$.pipe(
     ofType(ListActionTypes.LoadLists),
-    /** An EMPTY observable only emits completion. Replace with your own observable API request */
-    concatMap(() => EMPTY)
   );
 
+  @Effect()
+  saveList$ = this.actions$;
 
-  constructor(private actions$: Actions<ListActions>) { }
+
+  constructor(private actions$: Actions<ListActions>, private service: ListService) { }
 
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -10,12 +11,14 @@ import { MatButtonModule } from '@angular/material/button';
     imports: [
         MatListModule,
         MatMenuModule,
-        MatButtonModule
+        MatButtonModule,
+        MatIconModule
     ],
     exports: [
         MatListModule,
         MatMenuModule,
-        MatButtonModule
+        MatButtonModule,
+        MatIconModule
     ],
     providers: [],
     bootstrap: []

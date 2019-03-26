@@ -1,6 +1,11 @@
-<h2>Angular ngrx starter template</h2>
-<al-login (onSignIn)="onSignIn($event)"></al-login>
-{{userData}}
+<al-login class="mat-body" (onSignIn)="onSignIn($event)"></al-login>
+<button mat-button [matMenuTriggerFor]="menu">Lists</button>
+<mat-menu #menu="matMenu">
+    <span *ngFor="let item of menuItems">
+        <a mat-menu-item routerLink="/list/{{item.name}}">{{item.name}}</a>
+    </span>
+</mat-menu>
+<a mat-button routerLink="/new">New</a>
 <hr />
-<!-- <al-list-home></al-list-home> -->
+
 <router-outlet></router-outlet>

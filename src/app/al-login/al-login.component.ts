@@ -15,6 +15,7 @@ export class AlLoginComponent implements OnInit {
   @Output() onSignIn: EventEmitter<any>;
   @Input() autoLogin: boolean = true;
   showLogin: boolean = true;
+  userData: any;
 
   constructor(private socialAuthService: AuthService) {
     this.onSignIn = new EventEmitter();
@@ -26,11 +27,7 @@ export class AlLoginComponent implements OnInit {
       socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     }
 
-    this.socialAuthService.signIn(socialPlatformProvider).then(
-      (userData) => {
-        // this.onSignIn.emit(userData);
-      }
-    );
+    this.socialAuthService.signIn(socialPlatformProvider).then(r => r);
   }
 
   ngOnInit() {
@@ -39,6 +36,7 @@ export class AlLoginComponent implements OnInit {
       first()
     ).subscribe(r => {
       this.showLogin = false;
+      this.userData = r;
       this.onSignIn.emit(r);
     });
   }
